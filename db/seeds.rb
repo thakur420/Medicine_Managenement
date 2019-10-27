@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Medicine.create(med_name: 'Others',staff_id: '0',quantity: -1,min_quantity: -1)
+Manager.create(manager_name: 'Rishab',manager_id:'rishab24rg@gmail.com',password:'rishab24rg@gmail.com')

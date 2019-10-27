@@ -9,7 +9,7 @@
       <%= f.text_field :patient_name ,class: 'form-control'%>
     
       <%= f.label :medicine_Name %>
-      <%= f.select :med_name, Medicine.where("id > ?",0).collect{|x|[x.med_name, x.med_name]},{:include_blank => 'Select'},class: 'form-control'%>
+      <%= f.select :med_name, Medicine.where("med_name != ?",'Others').collect{|x|[x.med_name, x.med_name]},{:include_blank => 'Select'},class: 'form-control'%>
       
       <%= f.label :quantity %>
       <%= f.number_field :quantity ,class: 'form-control'%>
