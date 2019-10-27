@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Parcel Tracking System</title>
+</head>
+<body style="padding:0px">
+<div>
+  <h1 class="log">Medicine Details</h1>
+</div>
+<hr> 
+<div class="col-md-8 col-md-offset-2 center">
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th class="center">Staff Name</th>
+        <th class="center">Medicine Name</th>
+        <th class="center">Patient Name</th>
+        <th class="center">Quantity</th>
+        <th class="center">Dispense Date</th>
+      </tr>
+    </thead>
+    <tbody>
+            <% @consumption.each do |c|  %>
+              <tr>
+                <td class="center" ><%= s=Staff.find_by(id:c.staff_id).staff_name %></td>
+                <td class="center" ><%= c.med_name %></td>
+                <td class="center" ><%= c.patient_name %></td>
+                <td class="center" ><%= c.quantity %></td>
+                <td class="center" ><%= c.dispensing_date %></td>
+              </tr>
+
+            <% end %>    
+    </tbody>
+  </table>
+</div>
+<%= link_to 'Back', '/manager_index'%>
+</body>
+</html>

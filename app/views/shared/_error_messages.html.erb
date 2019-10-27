@@ -1,0 +1,18 @@
+<% @x = (@order ? @order : @staff) %>
+<% if @consumption %>
+  <% @x = @consumption %>
+<% end %>
+<% if @x.errors.any? %>
+
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@x.errors.count, "error") %>.
+    </div>
+    <ul>
+    
+    <% @x.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

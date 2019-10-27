@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  staff_id: MyString
+  patient_name: MyString
+  med_name: MyString
+  quantity: 1
+  dispensing_date: 2019-10-22
+
+two:
+  staff_id: MyString
+  patient_name: MyString
+  med_name: MyString
+  quantity: 1
+  dispensing_date: 2019-10-22

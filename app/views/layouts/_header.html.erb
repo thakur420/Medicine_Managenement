@@ -1,0 +1,23 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "MMS", manager_index_path, id: "logo" %>
+    <nav>
+    <ul class="nav navbar-nav navbar-right">
+      
+       
+   
+        <% if logged_in? %>
+          <%if current_user["id"] == 0 %>
+            <li><%= link_to "Register Staff", add_staff_path %></li>
+            <li><%= link_to "View Staff",view_staff_path %></li>
+            <li><%= link_to "Medicine Analysis",'/medicine_analyse' %></li>
+            <li><%= link_to "Remaining Medicine",'/remaining_medicine' %></li>
+          <%end%>
+           <li><%= link_to "Log out", '/logoutmanager', method: :delete %></li>
+
+          <% end %>
+        
+      </ul>
+    </nav>
+  </div>
+</header>

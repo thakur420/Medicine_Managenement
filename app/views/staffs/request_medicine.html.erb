@@ -1,0 +1,37 @@
+<h1>Request_medicine</h1>
+<script type="text/javascript" >
+
+  $(document).ready(function(){
+    $('#medicine_Name').on('change', function(e) {
+      if ( this.value.length>0 && this.value == 0)
+      {
+        $("#addMed").show();
+      }
+      else
+      {
+        $("#addMed").hide();
+        document.getElementById('addMed').value = this.options[e.target.selectedIndex].text;
+        // console.log(this.options[e.target.selectedIndex].text)
+      }
+    });
+});
+
+</script>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:order_history)do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :medicine_Name %>
+      <%= f.select :med_name, Medicine.all.collect{|x|[x.med_name, x.id.to_s]},{:include_blank => 'Select'},:id => "medicine_Name",class: 'form-control'%>
+        
+      <%= f.text_field :med_name, placeholder: 'medicine_Name' ,:id =>"addMed",style: 'display:none',class: 'form-control'%> 
+
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity ,class: 'form-control'%>
+      
+
+      <%= f.submit "Request Medicine", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

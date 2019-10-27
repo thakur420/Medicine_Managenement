@@ -1,0 +1,19 @@
+<h1 class="log">Medicine Analyse</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:analyse)do |f| %>
+
+       <%= f.label :medicine_Name %>
+        <%= f.select :med_name, Medicine.where("id > ?",0).collect{|x|[x.med_name, x.med_name]},{:include_blank => 'Select'},class: 'form-control'%>
+
+        <%= f.label :From_Date %>
+      <%= f.date_field :date1, placeholder: 'From Date' ,:id =>"d1",class: 'form-control'%> 
+      <%= f.label :To_Date %>
+      <%= f.date_field :date2, placeholder: 'To Date' ,:id =>"d2",class: 'form-control'%> 
+      
+
+      <%= f.submit "Analyse Medicine", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

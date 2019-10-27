@@ -1,0 +1,24 @@
+<h1>Dispense_medicine</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:consumption_history)do |f| %>
+      <%= render 'shared/error_messages' %> 
+    
+      <%= f.label :patient_name %>
+      <%= f.text_field :patient_name ,class: 'form-control'%>
+    
+      <%= f.label :medicine_Name %>
+      <%= f.select :med_name, Medicine.where("id > ?",0).collect{|x|[x.med_name, x.med_name]},{:include_blank => 'Select'},class: 'form-control'%>
+      
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity ,class: 'form-control'%>
+
+      <%= f.label :dispensing_date %>
+      <%= f.date_field :dispensing_date ,class: 'form-control'%>
+      
+
+      <%= f.submit "Update Medicine", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

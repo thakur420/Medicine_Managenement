@@ -1,0 +1,53 @@
+<h1>Upload Medicine</h1>
+
+<script >
+
+  $(document).ready(function(){
+    $('#medicine_Name').on('change', function(e) {
+      // console.log("**************************************")
+      console.log(typeof(this.value))
+      if ( this.value.length>0 && this.value == 0)
+      {
+        $("#addMed").show();
+      }
+      else
+      {
+        $("#addMed").hide();
+        document.getElementById('addMed').value = this.options[e.target.selectedIndex].text;
+      }
+    });
+});
+
+</script>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:order)do |f| %>
+        <%= render 'shared/error_messages' %> 
+
+      <%= f.label :order_Id %>
+      <%= f.text_field :ord_id ,class: 'form-control'%>
+    
+      <%= f.label :medicine_Name %>
+      <%= f.select :med_name, Medicine.all.collect{|x|[x.med_name, x.id]},{:include_blank => 'Select'},:id => "medicine_Name" ,class: 'form-control'%><br />
+        
+      <%= f.text_field :med_name, placeholder: 'medicine_Name' ,:id =>"addMed",style: 'display:none',class: 'form-control'%> 
+      
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity ,class: 'form-control'%>
+
+      <%= f.label :billing_price %>
+      <%= f.number_field :billing_price ,class: 'form-control'%>
+
+      <%= f.label :expiry_date %>
+      <%= f.date_field :expiry_date ,class: 'form-control'%>
+
+      <%= f.label :billing_date %>
+      <%= f.date_field :billing_date ,class: 'form-control'%>
+      
+
+      <%= f.submit "Add Medicine", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

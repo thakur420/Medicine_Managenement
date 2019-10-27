@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Parcel Tracking System</title>
+
+    <script>
+  $('document').ready(function(){
+    $('#my-table').DataTable();
+  });
+</script>
+</head>
+<body style="padding:0px">
+<div>
+  <h1 class="log">Remaining Medicine Stock</h1>
+</div>
+<hr> 
+<div class="row">
+  <div class="col-md-3"></div>
+<div class="col-md-6">
+<table id="my-table" class="table">
+    <thead>
+      <tr>
+        <th class="center">Medicine Name</th>
+        <th class="center">Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+            <% @medicine.each do |m| %>
+              <tr>
+                  <td class="center" ><%= m.med_name %></td>
+                  <td class="center" ><%= m.quantity %></td>
+              </tr>
+
+            <% end %>    
+    </tbody>
+  </table>
+</div>
+</div>
+</body>
+</html>
