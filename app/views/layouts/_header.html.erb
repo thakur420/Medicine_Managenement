@@ -7,7 +7,7 @@
        
    
         <% if logged_in? %>
-          <%if current_user["id"] == 1 %>
+          <%if current_user["id"] == 1 && current_user["manager_name"]%>
             <li><%= link_to "Register Staff", add_staff_path %></li>
             <li><%= link_to "View Staff",view_staff_path %></li>
             <li><%= link_to "Medicine Analysis",'/medicine_analyse' %></li>
