@@ -20,6 +20,25 @@ h1,h2,h3,h4,h5,h6 {
 	line-height:1;
 }
 
+.lable{
+  color: wheat;
+}
+
+
+.p-t-40 {
+    padding-top: 40px;
+}
+
+label {
+
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+
+}
+
 h1 {
   font-size: 36px;
     line-height: 40px;
@@ -50,10 +69,40 @@ p {
 }
 
 body{
-  #backgroundbackground-image: url("dbms.jpg");
+  #background-image: url("img.jpeg");
+  background-size: 100% 100%;
   padding-top: 60px;
-  background-color: #f1f1f1;
+  #background-color: #f1f1f1;
 }
+
+.img{
+  background-image: url("img.jpeg");
+  background-size: 100% 100%;
+  padding-top: 60px;
+  #background-color: #f1f1f1;
+}
+
+
+
+.wrap-login100 {
+    width: 350px;
+    background: 
+#fff;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 0 3px 20px 0px
+    rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-left: 400px;
+}
+
+
+
+
 
 section{
 	overflow: auto;
@@ -216,7 +265,7 @@ input {
   
 }
 .navbar-inverse {
-  background-color: transparent;
+  background-color: white;
   border-color: transparent;
 }
 
@@ -246,23 +295,7 @@ input {
   box-sizing: border-box;
 }
 
-.btn-primary {
-  background-color: rgb(10, 163, 15);
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
- align-self: center;
- margin-left: auto;
- margin-right: auto;
- margin-bottom: auto;
-}
-btn-primary:hover {
-  opacity: 0.8;
-  color: #000000;
-}
+
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
   color: red;
@@ -270,7 +303,7 @@ btn-primary:hover {
 }
 
 .log{
-  margin-top: 2ch;
+  margin-top: 4ch;
   color:#FFFFFF;
   font-family:consolas;
   font-size:250%;
@@ -297,3 +330,63 @@ btn-primary:hover {
 }
 
 
+
+
+
+
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  margin-top:50px;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.pim{
+  background-image: url("admin.jpeg");
+  background-size: 100% 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin: auto;
+  #background-color: #f1f1f1;
+}
+
+
+.sim{
+  background-image: url("logo.png");
+  background-size: 100% 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin: auto;
+  #background-color: #f1f1f1;
+}

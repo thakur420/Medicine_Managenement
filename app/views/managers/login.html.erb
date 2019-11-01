@@ -2,29 +2,31 @@
 <html lang="en">
 <head>
     <title> Medicine Inventory Management System</title>
-</head>
-<body style="padding:0px">
-<div>
-<h1 class="log">
-  Login
-</h1>
-  
 
-  <div class="col-md-6 col-md-offset-3">
+</head>
+<body class="img" >
+<div class= 'wrap-login100 p-l-55 p-r-55 p-t-40 p-b-30'>
+
+  <h1 class= "login100-form-title p-b-37">
+  	LOGIN
+  </h1>
+
+  <div class="login100-form validate-form">
     <%= form_for(:manager) do |f| %>
  
 
-  <%= f.label :User_Id %>
-  <%= f.text_field :manager_id, class: 'form-control' %>
+  <%= f.label :User_Id , class: 'wrap-input100 validate-input m-b-20'%>
+  <%= f.text_field :manager_id, class: 'input100', placeholder: "Username" %>
 
 
 
-  <%= f.label :password %>
-  <%= f.password_field :password, class: 'form-control' %>
+  <%= f.label :password, class: 'wrap-input100 validate-input m-b-20' %>
+  <%= f.password_field :password, class: 'input100',  placeholder: "Password"%>
 
 
-
-  <%= f.submit "Login",class: "btn btn-primary" %>
+<div class="container-login100-form-btn">
+  <%= f.submit "Login",class: 'btn btn-primary' %>
+</div>
 <% end %>
     </div>
     

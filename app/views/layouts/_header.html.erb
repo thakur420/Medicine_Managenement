@@ -1,6 +1,14 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "MMS", manager_index_path, id: "logo" %>
+    <% if logged_in? %>
+          <%if current_user["id"] == 1 && current_user["manager_name"]%>
+            <%= link_to "MMS", manager_index_path, id: "logo" %>
+          <%else%>
+          <%= link_to "MMS", staff_home_path, id: "logo" %>
+          <%end%>
+    <% else %>
+    <%= link_to "MMS", "#", id: "logo" %>
+    <% end %>
     <nav>
     <ul class="nav navbar-nav navbar-right">
       
@@ -11,8 +19,14 @@
             <li><%= link_to "Register Staff", add_staff_path %></li>
             <li><%= link_to "View Staff",view_staff_path %></li>
             <li><%= link_to "Medicine Analysis",'/medicine_analyse' %></li>
-            <li><%= link_to "Remaining Medicine",'/remaining_medicine' %></li>
+            <li><%= link_to "View Request Medicine",'/view_request_medicine' %></li>
+          <%else%>
+            <li><%= link_to 'Request Medicine', request_medicine_path %></li>
+            <li><%= link_to 'Dispense Medicine', dispense_medicine_path %></li>
+            <li><%= link_to 'Upload Medicine', upload_medicine_path %></li>
+              
           <%end%>
+          <li><%= link_to "Remaining Medicine",'/remaining_medicine' %></li>
            <li><%= link_to "Log out", '/logoutmanager', method: :delete %></li>
 
           <% end %>

@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get '/view_medicine_details', to: 'managers#view_medicine_details' 
   get '/medicine_analyse_post', to: 'managers#medicine_analyse_post'
   get '/remaining_medicine', to: 'managers#remaining_medicine' 
+  delete '/discard/:id', to: 'managers#discard'
 end

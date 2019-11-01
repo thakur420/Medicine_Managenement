@@ -32,6 +32,7 @@
             <% end %>    
     </tbody>
   </table>
+  <p><%= link_to 'Download consumption history', asset_path("consumption_history.pdf", skip_pipeline: true), class: "btn btn-primary", :target => "_blank"  %></p>
 </div>
 <%= link_to 'Back', '/manager_index'%>
 </body>

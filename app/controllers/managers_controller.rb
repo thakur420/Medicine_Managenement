@@ -1,6 +1,13 @@
 class ManagersController < ApplicationController
 	before_action :logged_in_user, only: [:add_staff,:manager_index,:view_staff,:delete_staff,:medicine_analyse,:medicine_analyse_post,:remaining_medicine] 
 	def login
+		if logged_in? 
+          if current_user["id"] == 1 && current_user["manager_name"]
+          	redirect_to '/manager_index'
+          else
+          	redirect_to '/staffs/index'
+          end
+        end 
 	end
 	
 	def manager_index
@@ -18,13 +25,47 @@ class ManagersController < ApplicationController
 
 	def view_request_medicine
 		@order_history = OrderHistory.all
+
+		Prawn::Document.generate("#{Rails.root}/public/Requested_Medicine.pdf") do |pdf|
+			table_data = Array.new
+			pdf.text  "Requested_Medicine\n"
+			pdf.text  " "
+			table_data3 = Array.new
+			table_data3 << ["Staff Name",   "Medicine Name",  "Quantity"]
+			@order_history.each do |c|
+			table_data3 <<[s=Staff.find(c.staff_id).staff_name,  c.med_name, c.quantity]
+			end
+
+			# pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true})
+			#pdf.table(table_data2, :width => 500, :cell_style => { :inline_format => true})
+			pdf.table(table_data3, :width => 500, :cell_style => { :inline_format => true})
+
+		end
+
 	end
 
 	def medicine_analyse
 	end
 
 	def remaining_medicine
-		@medicine = Medicine.all
+		@medicine = Medicine.where.not(med_name: "Others")
+
+		Prawn::Document.generate("#{Rails.root}/public/Available_Stock.pdf") do |pdf|
+			table_data = Array.new
+			pdf.text  "Available_Stock\n"
+			pdf.text  " "
+			table_data3 = Array.new
+			table_data3 << ["Medicine Name",  "Quantity"]
+			@medicine.each do |c|
+			table_data3 <<[c.med_name, c.quantity]
+			end
+
+			# pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true})
+			#pdf.table(table_data2, :width => 500, :cell_style => { :inline_format => true})
+			pdf.table(table_data3, :width => 500, :cell_style => { :inline_format => true})
+
+		end
+
 	end
 
 
@@ -32,9 +73,25 @@ class ManagersController < ApplicationController
 		if params[:analyse][:date1].empty?
 			@consumption =  ConsumptionHistory.where(med_name: params[:analyse][:med_name])
 		elsif params[:analyse][:med_name].empty?
-			@consumption =  ConsumptionHistory.where(created_at: params[:analyse][:date1] ..  params[:analyse][:date2])
+			@consumption =  ConsumptionHistory.where(dispensing_date: params[:analyse][:date1] ..  params[:analyse][:date2])
 		else
-			@consumption =  ConsumptionHistory.where(created_at: params[:analyse][:date1] ..  params[:analyse][:date2], med_name: params[:analyse][:med_name])
+			@consumption =  ConsumptionHistory.where(dispensing_date: params[:analyse][:date1] ..  params[:analyse][:date2], med_name: params[:analyse][:med_name])
+		end
+
+		Prawn::Document.generate("#{Rails.root}/public/consumption_history.pdf") do |pdf|
+			table_data = Array.new
+			pdf.text  "ConsumptionHistory\n"
+			pdf.text  " "
+			table_data3 = Array.new
+			table_data3 << ["Staff Name",   "Medicine Name",  "Patient Name",  "Quantity",  "Dispense Date"]
+			@consumption.each do |c|
+			table_data3 <<[s=Staff.find(c.staff_id).staff_name,  c.med_name,  c.patient_name,  c.quantity,  c.dispensing_date]
+			end
+
+			# pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true})
+			#pdf.table(table_data2, :width => 500, :cell_style => { :inline_format => true})
+			pdf.table(table_data3, :width => 500, :cell_style => { :inline_format => true})
+
 		end
 	end
 
@@ -72,6 +129,12 @@ class ManagersController < ApplicationController
 		@staff.destroy
 		redirect_to '/view_staff'
 
+	end
+
+	def discard
+		@order_history = OrderHistory.find(params[:id])
+		@order_history.destroy
+		redirect_to '/view_request_medicine'
 	end
 
 	def destroy
